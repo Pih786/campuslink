@@ -1,0 +1,110 @@
+/*
+  Design tokens. Light is the default; dark applies when the user picks it
+  (data-theme="dark") or when the OS prefers dark and no choice was saved.
+*/
+
+:root {
+  color-scheme: light;
+
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* Neutrals: warm paper rather than pure grey */
+  --bg: #f4f3ef;
+  --surface: #ffffff;
+  --surface-2: #faf9f6;
+  --surface-3: #efede7;
+  --border: #e3e0d8;
+  --border-strong: #cdc9be;
+
+  --text: #1b1c1f;
+  --text-2: #4d5058;
+  --text-3: #7c7f87;
+
+  /* Brand: a single deep "registrar" blue */
+  --brand: #1f4f82;
+  --brand-hover: #173e67;
+  --brand-soft: #e9eff6;
+  --brand-border: #c2d2e5;
+  --on-brand: #ffffff;
+
+  --success: #1d7348;
+  --success-soft: #e7f2eb;
+  --success-border: #bfdcc9;
+  --warning: #8f5a00;
+  --warning-soft: #fbf1db;
+  --warning-border: #ead29d;
+  --danger: #b0261c;
+  --danger-soft: #fbeae8;
+  --danger-border: #efc2bd;
+
+  /* Pipeline stages: muted, distinguishable, never neon */
+  --stage-applied: #5b7fa6;
+  --stage-shortlisted: #7867a6;
+  --stage-interview: #a8762a;
+  --stage-selected: #2c8385;
+  --stage-offered: #2f63a6;
+  --stage-accepted: #4c945a;
+  --stage-joined: #1d7348;
+  --stage-closed: #a9544d;
+
+  --radius-sm: 4px;
+  --radius: 6px;
+  --radius-lg: 10px;
+
+  --shadow-sm: 0 1px 2px rgba(28, 26, 20, 0.06);
+  --shadow: 0 1px 2px rgba(28, 26, 20, 0.05), 0 4px 14px rgba(28, 26, 20, 0.06);
+  --shadow-lg: 0 18px 40px rgba(28, 26, 20, 0.16), 0 2px 8px rgba(28, 26, 20, 0.06);
+  --focus-ring: 0 0 0 3px rgba(31, 79, 130, 0.22);
+  --overlay: rgba(20, 20, 18, 0.42);
+
+  --sidebar-w: 244px;
+  --content-max: 1180px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #111315;
+  --surface: #181b1e;
+  --surface-2: #15171a;
+  --surface-3: #212529;
+  --border: #2a2e33;
+  --border-strong: #3b4047;
+
+  --text: #e8e9eb;
+  --text-2: #adb1b8;
+  --text-3: #7f848c;
+
+  --brand: #82a8d9;
+  --brand-hover: #9dbbe3;
+  --brand-soft: rgba(130, 168, 217, 0.12);
+  --brand-border: rgba(130, 168, 217, 0.34);
+  --on-brand: #0c1624;
+
+  --success: #6cc496;
+  --success-soft: rgba(108, 196, 150, 0.11);
+  --success-border: rgba(108, 196, 150, 0.3);
+  --warning: #e3b061;
+  --warning-soft: rgba(227, 176, 97, 0.11);
+  --warning-border: rgba(227, 176, 97, 0.3);
+  --danger: #ee8a80;
+  --danger-soft: rgba(238, 138, 128, 0.11);
+  --danger-border: rgba(238, 138, 128, 0.32);
+
+  --stage-applied: #86a5c8;
+  --stage-shortlisted: #a497cc;
+  --stage-interview: #d3a45a;
+  --stage-selected: #5fb3b5;
+  --stage-offered: #7aa4dc;
+  --stage-accepted: #7fbe8a;
+  --stage-joined: #6cc496;
+  --stage-closed: #d8867f;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 14px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 18px 40px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --focus-ring: 0 0 0 3px rgba(130, 168, 217, 0.3);
+  --overlay: rgba(0, 0, 0, 0.6);
+}

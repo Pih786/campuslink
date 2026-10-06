@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+uploads/resumes/*
+!uploads/resumes/.gitkeep
+*.log
+private-uploads/

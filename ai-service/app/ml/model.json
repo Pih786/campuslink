@@ -1,0 +1,91 @@
+{
+  "feature_names": [
+    "skill_match",
+    "education",
+    "projects",
+    "certifications",
+    "assessment_proxy",
+    "experience",
+    "verified_ratio"
+  ],
+  "scaler_mean": [
+    47.52406334492082,
+    100.0,
+    16.9032831208961,
+    0.0,
+    60.68435689455388,
+    15.541135573580533,
+    0.2014355607055499
+  ],
+  "scaler_scale": [
+    16.591804261659842,
+    1.0,
+    21.01832581632207,
+    1.0,
+    22.780166409300342,
+    18.292702640567327,
+    0.21138718172792784
+  ],
+  "coefficients": [
+    2.282727642348124,
+    0.0,
+    0.07256510065758447,
+    0.0,
+    1.837229425661104,
+    0.0012120343536151075,
+    0.06712330502705804
+  ],
+  "intercept": -6.150564594398821,
+  "feature_importance": [
+    {
+      "feature": "skill_match",
+      "coefficient": 2.2827
+    },
+    {
+      "feature": "assessment_proxy",
+      "coefficient": 1.8372
+    },
+    {
+      "feature": "projects",
+      "coefficient": 0.0726
+    },
+    {
+      "feature": "verified_ratio",
+      "coefficient": 0.0671
+    },
+    {
+      "feature": "experience",
+      "coefficient": 0.0012
+    },
+    {
+      "feature": "education",
+      "coefficient": 0.0
+    },
+    {
+      "feature": "certifications",
+      "coefficient": 0.0
+    }
+  ],
+  "trained_on": {
+    "seasons": 6,
+    "students_per_season": 1200,
+    "eligible_pairs": 12945,
+    "hire_rate": 0.0587
+  },
+  "evaluated_on": {
+    "seasons": 2,
+    "eligible_pairs": 4141,
+    "hire_rate": 0.0609
+  },
+  "metrics": {
+    "trained_model": {
+      "auc": 0.9514,
+      "precision_at_10": 1.0
+    },
+    "existing_hand_set_formula": {
+      "auc": 0.9414,
+      "precision_at_10": 0.7
+    }
+  },
+  "notes": "Trained and evaluated on simulated placement seasons (see app/ml/simulation.py), not real historical data -- there isn't a season of real outcomes yet. The test seasons were never seen during training, mirroring training on past seasons to predict an upcoming one."
+}

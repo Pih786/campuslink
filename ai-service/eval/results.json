@@ -1,0 +1,292 @@
+{
+  "seeds": [
+    20260926,
+    11,
+    22,
+    33,
+    44
+  ],
+  "students_per_run": 1000,
+  "roles": 12,
+  "eligible_pairs": 8786,
+  "hires": 570,
+  "base_hire_rate": 0.065,
+  "k": 10,
+  "ranking": {
+    "CampusLink match score": {
+      "auc": {
+        "mean": 0.929,
+        "sd": 0.009
+      },
+      "precision_at_10": {
+        "mean": 0.437,
+        "sd": 0.041
+      },
+      "ndcg_at_10": {
+        "mean": 0.703,
+        "sd": 0.052
+      }
+    },
+    "Skill overlap only": {
+      "auc": {
+        "mean": 0.835,
+        "sd": 0.009
+      },
+      "precision_at_10": {
+        "mean": 0.287,
+        "sd": 0.051
+      },
+      "ndcg_at_10": {
+        "mean": 0.47,
+        "sd": 0.049
+      }
+    },
+    "CGPA only": {
+      "auc": {
+        "mean": 0.678,
+        "sd": 0.037
+      },
+      "precision_at_10": {
+        "mean": 0.163,
+        "sd": 0.024
+      },
+      "ndcg_at_10": {
+        "mean": 0.243,
+        "sd": 0.041
+      }
+    },
+    "Random": {
+      "auc": {
+        "mean": 0.499,
+        "sd": 0.016
+      },
+      "precision_at_10": {
+        "mean": 0.077,
+        "sd": 0.015
+      },
+      "ndcg_at_10": {
+        "mean": 0.105,
+        "sd": 0.015
+      }
+    }
+  },
+  "readiness_calibration": [
+    {
+      "band": "Not Ready",
+      "pairs": 4976,
+      "hire_rate": 0.001
+    },
+    {
+      "band": "Developing",
+      "pairs": 3084,
+      "hire_rate": 0.039
+    },
+    {
+      "band": "Ready",
+      "pairs": 576,
+      "hire_rate": 0.53
+    },
+    {
+      "band": "Highly Employable",
+      "pairs": 150,
+      "hire_rate": 0.927
+    }
+  ],
+  "per_role_first_run": [
+    {
+      "role": "Backend Engineer",
+      "eligible": 73,
+      "hired": 2
+    },
+    {
+      "role": "Frontend Engineer",
+      "eligible": 146,
+      "hired": 5
+    },
+    {
+      "role": "Full Stack Developer",
+      "eligible": 93,
+      "hired": 3
+    },
+    {
+      "role": "Data Analyst",
+      "eligible": 262,
+      "hired": 13
+    },
+    {
+      "role": "Data Scientist",
+      "eligible": 65,
+      "hired": 2
+    },
+    {
+      "role": "Cloud Engineer",
+      "eligible": 142,
+      "hired": 10
+    },
+    {
+      "role": "DevOps Engineer",
+      "eligible": 221,
+      "hired": 13
+    },
+    {
+      "role": "Python Developer",
+      "eligible": 83,
+      "hired": 5
+    },
+    {
+      "role": "Embedded Engineer",
+      "eligible": 58,
+      "hired": 3
+    },
+    {
+      "role": "ML Engineer",
+      "eligible": 40,
+      "hired": 2
+    },
+    {
+      "role": "Systems Engineer",
+      "eligible": 165,
+      "hired": 23
+    },
+    {
+      "role": "Graduate Trainee",
+      "eligible": 420,
+      "hired": 28
+    }
+  ],
+  "jd_parser": {
+    "cases": 8,
+    "precision": 0.947,
+    "recall": 1.0,
+    "f1": 0.973,
+    "details": [
+      {
+        "expected": [
+          "Docker",
+          "Java",
+          "SQL",
+          "Spring Boot"
+        ],
+        "found": [
+          "Docker",
+          "Java",
+          "SQL",
+          "Spring Boot"
+        ]
+      },
+      {
+        "expected": [
+          "JavaScript",
+          "Next.js",
+          "REST API",
+          "React",
+          "TypeScript"
+        ],
+        "found": [
+          "JavaScript",
+          "Next.js",
+          "REST API",
+          "React",
+          "TypeScript"
+        ]
+      },
+      {
+        "expected": [
+          "Excel",
+          "Power BI",
+          "Python",
+          "SQL",
+          "Tableau"
+        ],
+        "found": [
+          "Excel",
+          "Power BI",
+          "Python",
+          "SQL",
+          "Tableau"
+        ]
+      },
+      {
+        "expected": [
+          "AWS",
+          "Docker",
+          "Kubernetes",
+          "Linux",
+          "Terraform"
+        ],
+        "found": [
+          "AWS",
+          "Docker",
+          "Kubernetes",
+          "Linux",
+          "Terraform"
+        ]
+      },
+      {
+        "expected": [
+          "Natural Language Processing",
+          "Pandas",
+          "PyTorch",
+          "Python",
+          "Scikit-learn"
+        ],
+        "found": [
+          "Machine Learning",
+          "Natural Language Processing",
+          "Pandas",
+          "PyTorch",
+          "Python",
+          "Scikit-learn"
+        ]
+      },
+      {
+        "expected": [
+          "Express.js",
+          "Git",
+          "MongoDB",
+          "Node.js",
+          "React"
+        ],
+        "found": [
+          "Express.js",
+          "Git",
+          "MongoDB",
+          "Node.js",
+          "React"
+        ]
+      },
+      {
+        "expected": [
+          "JavaScript",
+          "Jest",
+          "Postman",
+          "Selenium"
+        ],
+        "found": [
+          "JavaScript",
+          "Jest",
+          "Postman",
+          "Selenium"
+        ]
+      },
+      {
+        "expected": [
+          "Firebase",
+          "Java",
+          "Kotlin"
+        ],
+        "found": [
+          "Android Development",
+          "Firebase",
+          "Java",
+          "Kotlin"
+        ]
+      }
+    ]
+  },
+  "throughput": {
+    "match_scores": 1000,
+    "seconds": 0.018,
+    "per_second": 56370
+  }
+}

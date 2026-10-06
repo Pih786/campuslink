@@ -1,0 +1,6 @@
+# Only needed to run `python -m app.ml.train` (offline, one-off). The FastAPI
+# service itself never imports scikit-learn: it reads the small JSON weights
+# file that training produces and does the logistic-regression math by hand,
+# so the always-running service keeps a light dependency footprint.
+-r requirements.txt
+scikit-learn>=1.4.0
