@@ -118,6 +118,10 @@ export const PLACEMENT_NAV = {
       ],
     },
     {
+      label: "Learning",
+      links: [{ to: "/placement/lab-management", label: "Lab & assessment creation", icon: ClipboardCheck }],
+    },
+    {
       label: "Insights",
       links: [{ to: "/placement/copilot", label: "Ask Copilot", icon: MessageSquareText }],
     },
@@ -133,6 +137,7 @@ export const ADMIN_NAV = {
         { to: "/admin/approvals", label: "Staff approvals", icon: UserCheck },
         { to: "/admin/colleges", label: "New colleges", icon: Landmark },
         { to: "/admin/learning", label: "Learning library", icon: Library },
+        { to: "/placement/lab-management", label: "Lab & assessment creation", icon: ClipboardCheck },
       ],
     },
     {

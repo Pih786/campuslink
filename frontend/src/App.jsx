@@ -46,6 +46,7 @@ import PlacementCompanies from "./pages/placement/PlacementCompanies";
 import PlacementDrives from "./pages/placement/PlacementDrives";
 import PlacementTeam from "./pages/placement/PlacementTeam";
 import PlacementMentoring from "./pages/placement/PlacementMentoring";
+import LabManagement from "./pages/placement/LabManagement";
 
 import MentorDashboard from "./pages/mentor/MentorDashboard";
 import MentorMentees from "./pages/mentor/MentorMentees";
@@ -119,6 +120,7 @@ function App() {
                 <Route path="/placement/companies" element={<PlacementCompanies />} />
                 <Route path="/placement/copilot" element={<CopilotPage />} />
                 <Route path="/placement/mock-interviews" element={<MockInterviewsManager />} />
+                <Route path="/placement/lab-management" element={<LabManagement />} />
                 <Route element={<ProtectedRoute allowedRoles={["PLACEMENT_OFFICER"]} />}>
                   <Route path="/placement/team" element={<PlacementTeam />} />
                   <Route path="/placement/mentoring" element={<PlacementMentoring />} />

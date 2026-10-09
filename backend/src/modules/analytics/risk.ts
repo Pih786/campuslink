@@ -13,12 +13,13 @@ export function bandFor(score: number): ReadinessBand {
 // Same formula as ai-service compute_readiness: mean of proficiency/5 over
 // the role's required skills (absent = 0); no required skills = 0.
 export function roleReadinessScore(proficiencyBySkillId: Map<string, number>, requiredSkillIds: string[]): number {
-  if (requiredSkillIds.length === 0) return 0;
-  const total = requiredSkillIds.reduce((sum, id) => {
+  const uniqueSkillIds = [...new Set(requiredSkillIds.map((id) => id.trim()).filter(Boolean))];
+  if (uniqueSkillIds.length === 0) return 0;
+  const total = uniqueSkillIds.reduce((sum, id) => {
     const prof = proficiencyBySkillId.get(id) ?? 0;
     return sum + (Math.max(0, Math.min(5, prof)) / 5) * 100;
   }, 0);
-  return Math.round(total / requiredSkillIds.length);
+  return Math.round(total / uniqueSkillIds.length);
 }
 
 export interface RiskInput {

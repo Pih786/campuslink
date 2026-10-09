@@ -88,3 +88,20 @@ def test_readiness_alias_resolution(client):
     data = resp.json()
     assert data["score"] == 100
     assert data["band"] == "Highly Employable"
+
+
+def test_readiness_ignores_duplicate_required_skills(client):
+    resp = client.post(
+        "/ai/readiness",
+        json={
+            "studentSkills": [
+                {"name": "React", "proficiency": 5},
+                {"name": "Node.js", "proficiency": 3},
+            ],
+            "requiredSkills": ["React", "react", "Node.js", "AWS"],
+        },
+    )
+    assert resp.status_code == 200
+    data = resp.json()
+    assert data["score"] == 53
+    assert data["band"] == "Developing"

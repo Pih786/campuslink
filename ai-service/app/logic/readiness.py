@@ -28,8 +28,27 @@ def compute_readiness(student_skills: List[dict], required_skills: List[str]) ->
     An empty ``required_skills`` list is an explicit edge case: "nothing to
     be ready for" is scored as Not Ready (0), not as fully ready -- there is
     nothing to have demonstrated readiness against.
+
+    Duplicate required skills should be counted once; repeated mentions of the
+    same skill (e.g. because the same requirement was added twice) should not
+    dilute a student's readiness score.
     """
     if not required_skills:
+        return {"score": 0, "band": _BAND_NOT_READY}
+
+    unique_required_skills: List[str] = []
+    seen = set()
+    for raw_skill in required_skills or []:
+        skill = resolve_skill_name(raw_skill)
+        if not skill:
+            continue
+        key = skill.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        unique_required_skills.append(skill)
+
+    if not unique_required_skills:
         return {"score": 0, "band": _BAND_NOT_READY}
 
     student_by_skill: Dict[str, float] = {}
@@ -42,7 +61,7 @@ def compute_readiness(student_skills: List[dict], required_skills: List[str]) ->
             student_by_skill[name] = prof
 
     per_skill_scores: List[float] = []
-    for raw_skill in required_skills:
+    for raw_skill in unique_required_skills:
         skill = resolve_skill_name(raw_skill)
         prof = student_by_skill.get(skill)
         if prof is None:

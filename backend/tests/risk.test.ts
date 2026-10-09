@@ -52,3 +52,11 @@ test("risk: no open roles does not count against the student", () => {
   const r = assessUnplacedRisk({ ...healthy, openRoles: 0, eligibleOpenRoles: 0 });
   assert.equal(r.score, 0);
 });
+
+test("readiness score ignores repeated required-skill entries", () => {
+  const prof = new Map([
+    ["react", 5],
+    ["node", 3],
+  ]);
+  assert.equal(roleReadinessScore(prof, ["react", "react", "node", "aws"]), 53);
+});

@@ -1,6 +1,5 @@
-// Re-runnable: merges skills that differ only in letter case or spacing
-// ("java", "Java", "JAVA ") into one, so eligibility (which compares skill
-// ids) treats them as the same skill.
+// Re-runnable: merges skill aliases and spelling variants into canonical
+// records so eligibility (which compares skill ids) treats them as the same.
 //
 //   npx tsx scripts/merge-duplicate-skills.ts --dry-run   # show the plan
 //   npx tsx scripts/merge-duplicate-skills.ts             # apply it
@@ -11,7 +10,7 @@
 // required both spellings keeps one requirement (required wins over
 // preferred, the higher minimum level wins).
 import { prisma } from "../src/config/prisma";
-import { pickCanonical, skillKey } from "../src/modules/skills/skills.service";
+import { normalizeSkillName, pickCanonical, skillKey } from "../src/modules/skills/skills.service";
 
 const dryRun = process.argv.includes("--dry-run");
 
@@ -75,14 +74,16 @@ async function main() {
   });
   const groups = new Map<string, typeof skills>();
   for (const s of skills) groups.set(skillKey(s.name), [...(groups.get(skillKey(s.name)) ?? []), s]);
-  const duplicates = [...groups.values()].filter((g) => g.length > 1);
+  const groupsToNormalize = [...groups.values()].filter(
+    (group) => group.length > 1 || normalizeSkillName(group[0].name) !== group[0].name
+  );
 
-  if (!duplicates.length) {
-    console.log("No duplicate skills.");
+  if (!groupsToNormalize.length) {
+    console.log("No duplicate or non-canonical skills.");
     return;
   }
 
-  for (const group of duplicates) {
+  for (const group of groupsToNormalize) {
     const keep = pickCanonical(group);
     const drop = group.filter((s) => s.id !== keep.id);
     console.log(
@@ -91,12 +92,17 @@ async function main() {
         .join(", ")}`
     );
     if (dryRun) continue;
-    // Afterwards the kept row gets the normalised spelling (trimmed, single spaces).
-    const cleanName = keep.name.trim().replace(/\s+/g, " ");
     for (const d of drop) await mergeInto(keep.id, d.id);
-    if (cleanName !== keep.name) await prisma.skill.update({ where: { id: keep.id }, data: { name: cleanName } });
+    const canonicalName = normalizeSkillName(keep.name);
+    if (canonicalName !== keep.name) {
+      await prisma.skill.update({ where: { id: keep.id }, data: { name: canonicalName } });
+    }
   }
-  console.log(dryRun ? `\n${duplicates.length} groups would be merged.` : `\nMerged ${duplicates.length} groups.`);
+  console.log(
+    dryRun
+      ? `\n${groupsToNormalize.length} groups would be merged or normalized.`
+      : `\nMerged or normalized ${groupsToNormalize.length} groups.`
+  );
 }
 
 main()
